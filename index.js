@@ -43,8 +43,7 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-      var respond = processText(text)
-      sendText(sender,respond)
+      sendText(sender,processText(text))
 		}
 	}
 	res.sendStatus(200)
