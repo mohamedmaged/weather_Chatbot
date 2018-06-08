@@ -43,6 +43,7 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
+      console.log("receive t : "text);
       processText(sender,text)
 		}
 	}
@@ -72,7 +73,8 @@ function sendText(sender, text) {
 /*** dialoglfow text request ***/
 function processText(sender,text)
  {
-  var req = api.textRequest('temp in cairo', {
+   console.log("process text :" + text);
+  var req = api.textRequest(text, {
       sessionId: 'UNIQE SESSION ID'
   });
 
