@@ -12,6 +12,7 @@
     "apiai": "^4.0.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "openweather-apis": "^3.3.5",
     "request": "^2.87.0"
   }
 }
