@@ -52,7 +52,6 @@ app.post('/webhook/', function(req, res) {
 
 /*** send msg ***/
 function sendText(sender, text) {
-	let messageData = {text: text}
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
@@ -61,11 +60,11 @@ function sendText(sender, text) {
 			recipient: {id: sender},
 			message :{
         text:text ,
-      /*  quick_replies : [
+        quick_replies : [
           {
             content_type : location ,
           }
-        ]*/
+        ]
       }
 		}
 	}, function(error, response, body) {
