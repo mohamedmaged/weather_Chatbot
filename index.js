@@ -43,8 +43,7 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-      sendText(sender,"the temp is ")
-      sendText(sender,processText(text))
+      processText(text)
 		}
 	}
 	res.sendStatus(200)
@@ -94,20 +93,28 @@ function processText(text)
 /*** getTemperature ***/
 function getTemperature (city,country,latitude,longitude)
 {
+  var w = "The temp in " ;
   weather.setCoordinate(0,0); // set back to zero and zero so not to force weather to be set on last coordinate
 
-  if(latitude!="" && longitude!="")
+  if(latitude!="" && longitude!=""){
     weather.setCoordinate(latitude,longitude);
-  if(city!="")
+    w=w+"latitude : "+latitude+" longitude : "+longitude;
+  }
+  if(city!=""){
     weather.setCity(city);
-  if(country!="" && city === "")
+    w=w+city;
+  }
+  if(country!="" && city === ""){
     weather.setCity(country);
-
+    w=w+country;
+  }
   weather.getTemperature(function(err, temp){
    if(temp === 'undefined'){
      return;
    }
    console.log(temp);
+   w=w+" is "+ temp + " Celesius .";
+   sendText(w)
    return temp;
 })
 }
