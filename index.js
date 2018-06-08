@@ -9,15 +9,15 @@ var aikey= "e92f37fadbcf41bb86e74895bed5711d"
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-//var weather = require('openweather-apis');
+var weather = require('openweather-apis');
 const app = express()
-//var apiai = require('apiai');
+var apiai = require('apiai');
 
 /***conf***/
-//var api = apiai(aikey);
-/*weather.setLang('en');
+var api = apiai(aikey);
+weather.setLang('en');
 weather.setUnits('metric');
-weather.setAPPID(key);*/
+weather.setAPPID(key);
 app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
@@ -35,9 +35,8 @@ app.get('/webhook/', function(req, res) {
 	res.send("Wrong token")
 })
 
-//processText("temp in london")
 /*** facebook webhook ***/
-/*app.post('/webhook/', function(req, res) {
+app.post('/webhook/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
@@ -50,7 +49,7 @@ app.get('/webhook/', function(req, res) {
 	}
 	res.sendStatus(200)
 })
-*/
+
 /*** send msg ***/
 function sendText(sender, text) {
 	let messageData = {text: text}
@@ -72,7 +71,7 @@ function sendText(sender, text) {
 }
 
 /*** dialoglfow text request ***/
-/*function processText(text)
+function processText(text)
  {
   var req = api.textRequest('temp in cairo', {
       sessionId: 'UNIQE SESSION ID'
@@ -93,7 +92,7 @@ function sendText(sender, text) {
 }
 
 /*** getTemperature ***/
-/*function getTemperature (city,country,latitude,longitude)
+function getTemperature (city,country,latitude,longitude)
 {
   weather.setCoordinate(0,0); // set back to zero and zero so not to force weather to be set on last coordinate
 
@@ -111,7 +110,7 @@ function sendText(sender, text) {
    console.log(temp);
    return temp;
 })
-}*/
+}
 app.listen(app.get('port'), function() {
 	console.log("running: port")
 })
