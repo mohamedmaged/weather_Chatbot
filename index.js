@@ -59,7 +59,14 @@ function sendText(sender, text) {
 		method: "POST",
 		json: {
 			recipient: {id: sender},
-			message : messageData,
+			message :{
+        text:text ,
+        quick_replies : [
+          {
+            content_type : location ,
+          }
+        ]
+      }
 		}
 	}, function(error, response, body) {
 		if (error) {
