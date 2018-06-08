@@ -61,11 +61,11 @@ function sendText(sender, text) {
 			recipient: {id: sender},
 			message :{
         text:text ,
-        quick_replies : [
+      /*  quick_replies : [
           {
             content_type : location ,
           }
-        ]
+        ]*/
       }
 		}
 	}, function(error, response, body) {
