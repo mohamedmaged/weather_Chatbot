@@ -11,10 +11,10 @@ const bodyParser = require('body-parser')
 const request = require('request')
 var weather = require('openweather-apis');
 const app = express()
-var apiai = require('apiai');
+//var apiai = require('apiai');
 
 /***conf***/
-var api = apiai(aikey);
+//var api = apiai(aikey);
 weather.setLang('en');
 weather.setUnits('metric');
 weather.setAPPID(key);
@@ -72,7 +72,7 @@ function sendText(sender, text) {
 }
 
 /*** dialoglfow text request ***/
-function processText(text)
+/*function processText(text)
  {
   var req = api.textRequest('temp in cairo', {
       sessionId: 'UNIQE SESSION ID'
@@ -93,7 +93,7 @@ function processText(text)
 }
 
 /*** getTemperature ***/
-function getTemperature (city,country,latitude,longitude)
+/*function getTemperature (city,country,latitude,longitude)
 {
   weather.setCoordinate(0,0); // set back to zero and zero so not to force weather to be set on last coordinate
 
@@ -111,4 +111,4 @@ function getTemperature (city,country,latitude,longitude)
    console.log(temp);
    return temp;
 })
-}
+}*/
