@@ -43,7 +43,7 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-      processText(text)
+      processText(sender,text)
 		}
 	}
 	res.sendStatus(200)
@@ -70,7 +70,7 @@ function sendText(sender, text) {
 }
 
 /*** dialoglfow text request ***/
-function processText(text)
+function processText(text,sender)
  {
   var req = api.textRequest('temp in cairo', {
       sessionId: 'UNIQE SESSION ID'
@@ -82,7 +82,7 @@ function processText(text)
     var longitude = response.result.parameters.long;
     var country = response.result.parameters.country;
     console.log(response.result.parameters);
-    return (getTemperature(city,country,latitude,longitude));
+    return (getTemperature(sender,city,country,latitude,longitude));
   });
   req.on('error', function(error) {
       console.log(error);
@@ -91,7 +91,7 @@ function processText(text)
 }
 
 /*** getTemperature ***/
-function getTemperature (city,country,latitude,longitude)
+function getTemperature (sender,city,country,latitude,longitude)
 {
   var w = "The temp in " ;
   weather.setCoordinate(0,0); // set back to zero and zero so not to force weather to be set on last coordinate
@@ -112,10 +112,11 @@ function getTemperature (city,country,latitude,longitude)
    if(temp === 'undefined'){
      return;
    }
+   else {
    console.log(temp);
    w=w+" is "+ temp + " Celesius .";
    sendText(w)
-   return temp;
+ }
 })
 }
 app.listen(app.get('port'), function() {
