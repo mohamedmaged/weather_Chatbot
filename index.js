@@ -112,3 +112,6 @@ function sendText(sender, text) {
    return temp;
 })
 }*/
+app.listen(app.get('port'), function() {
+	console.log("running: port")
+})
