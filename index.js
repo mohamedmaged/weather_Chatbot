@@ -35,7 +35,7 @@ app.get('/webhook/', function(req, res) {
 	res.send("Wrong token")
 })
 
-processText("temp in london")
+//processText("temp in london")
 /*** facebook webhook ***/
 /*app.post('/webhook/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
