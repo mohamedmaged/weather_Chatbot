@@ -70,7 +70,7 @@ function sendText(sender, text) {
 }
 
 /*** dialoglfow text request ***/
-function processText(text,sender)
+function processText(sender,text)
  {
   var req = api.textRequest('temp in cairo', {
       sessionId: 'UNIQE SESSION ID'
@@ -82,7 +82,7 @@ function processText(text,sender)
     var longitude = response.result.parameters.long;
     var country = response.result.parameters.country;
     console.log(response.result.parameters);
-    return (getTemperature(sender,city,country,latitude,longitude));
+    getTemperature(sender,city,country,latitude,longitude)
   });
   req.on('error', function(error) {
       console.log(error);
