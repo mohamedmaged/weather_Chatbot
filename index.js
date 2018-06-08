@@ -9,15 +9,15 @@ var aikey= "e92f37fadbcf41bb86e74895bed5711d"
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-var weather = require('openweather-apis');
+//var weather = require('openweather-apis');
 const app = express()
 //var apiai = require('apiai');
 
 /***conf***/
 //var api = apiai(aikey);
-weather.setLang('en');
+/*weather.setLang('en');
 weather.setUnits('metric');
-weather.setAPPID(key);
+weather.setAPPID(key);*/
 app.set('port', (process.env.PORT || 5000))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
