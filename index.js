@@ -115,7 +115,7 @@ function getTemperature (sender,city,country,latitude,longitude)
    else {
    console.log(temp);
    w=w+" is "+ temp + " Celesius .";
-   sendText(w)
+   sendText(sender,w)
  }
 })
 }
