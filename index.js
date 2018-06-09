@@ -143,8 +143,7 @@ function processText(sender,text)
 		{
 			sendPayload(sender)
 		}
-		elsey
-
+		else
     getTemperature(sender,city,country,latitude,longitude)
 
   });
