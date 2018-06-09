@@ -109,8 +109,10 @@ function processText(sender,text)
   });
 
   req.on('response', function(response) {
-		console.log(" all response " + response);
-		console.log(" all result " + response.result);
+		console.log(" all response ");
+		console.log(response);
+		console.log(" all result ");
+		console.log(response.result);
 		if(response.result.intent.displayName === "weather")
 		{
     var city =response.result.parameters.city ;
