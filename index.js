@@ -87,7 +87,7 @@ function sendPayload(sender)
 		json: {
 			recipient: {id: sender},
 			message :{
-        text:sText ,
+        text:"please give me your location" ,
         quick_replies :[
 						{
 							content_type : "location",
