@@ -1,16 +1,9 @@
 'use strict'
 
-/***Global variables , keys and tokens***/
+/*** keys and tokens***/
 let token ="EAAeGNZBbhP1wBALzadtj7X4a07UgEsUZB3oVojexl1qIdhIAsAZBhrNEsBLdlPEtBB6yUQKNCYdfs3kSWSbVcE6qRGxhNcwjbdHEI9STkyHIoDrWPn8w9M6ZCzm8ZCheGLQuFJAC1rkStQG24BRHDjHGuZCzMntUcneMtpr4YNy0AEHYwuWBLZC"
 var key= "83bcd41b2f4711fda30600152d4d32f1"
 var aikey= "e92f37fadbcf41bb86e74895bed5711d"
-/*let locData =  [
-		{
-			content_type : "location",
-			title : "get location",
-			payload : "location_for_developer"
-		}
-	]*/
 
 /***lib***/
 const express = require('express')
@@ -90,6 +83,7 @@ function sendText(sender, sText) {
 	})
 }
 
+/*** send location quick reply ***/
 function sendPayload(sender)
 {
 	request({
