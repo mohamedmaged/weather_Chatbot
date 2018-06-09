@@ -131,7 +131,9 @@ function processText(sender,text)
 		{
 			sendPayload(sender)
 		}
+		else 
     getTemperature(sender,city,country,latitude,longitude)
+
   });
   req.on('error', function(error) {
       console.log(error);
