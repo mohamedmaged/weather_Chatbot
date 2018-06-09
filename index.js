@@ -59,7 +59,7 @@ function sendText(sender, sText) {
 		json: {
 			recipient: {id: sender},
 			message :{
-        //text:sText
+        text:sText ,
         quick_replies : [
           {
 						content_type : "location",
