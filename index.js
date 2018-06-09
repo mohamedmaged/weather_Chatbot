@@ -132,14 +132,17 @@ function processText(sender,text)
     var longitude = response.result.parameters.long;
     var country = response.result.parameters.country;
     console.log(response.result.parameters);
-	}
+
 		if(!city && !latitude && !longitude && !country)
 		{
 			sendPayload(sender)
 		}
 		else
     getTemperature(sender,city,country,latitude,longitude)
-
+}
+else {
+	sendText(sender,response.result.fulfillment.speech)
+}
   });
   req.on('error', function(error) {
       console.log(error);
