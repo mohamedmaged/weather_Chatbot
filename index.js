@@ -55,7 +55,7 @@ app.post('/webhook/', function(req, res) {
       console.log("receive t : "+text);
       processText(sender,text)
 		}
-		if(event.message.attachments){
+		if(event.message.hasOwnProperty('attachments')){
 			var latitude = 0;
 			var longitude = 0 ;
 			if(event.message.attachments[0].payload.coordinates)
