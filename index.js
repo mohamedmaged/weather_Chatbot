@@ -44,6 +44,8 @@ app.get('/webhook/', function(req, res) {
 
 /*** facebook webhook ***/
 app.post('/webhook/', function(req, res) {
+	console.log("event message");
+	console.log(event.message);
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
@@ -52,6 +54,16 @@ app.post('/webhook/', function(req, res) {
 			let text = event.message.text
       console.log("receive t : "+text);
       processText(sender,text)
+		}
+		if(event.message.attachments){
+			var latitude = 0;
+			var longitude = 0 ;
+			if(event.message.attachments[0].payload.coordinates)
+			{
+				latitude = event.message.attachments[0].payload.coordinates.lat ;
+				longitude = event.message.attachments[0].payload.coordinates.long ;
+				getTemperature(sender,0,0,latitude,longitude)
+			}
 		}
 	}
 	res.sendStatus(200)
@@ -131,7 +143,8 @@ function processText(sender,text)
 		{
 			sendPayload(sender)
 		}
-		else 
+		elsey
+
     getTemperature(sender,city,country,latitude,longitude)
 
   });
