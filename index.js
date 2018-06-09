@@ -4,13 +4,13 @@
 let token ="EAAeGNZBbhP1wBALzadtj7X4a07UgEsUZB3oVojexl1qIdhIAsAZBhrNEsBLdlPEtBB6yUQKNCYdfs3kSWSbVcE6qRGxhNcwjbdHEI9STkyHIoDrWPn8w9M6ZCzm8ZCheGLQuFJAC1rkStQG24BRHDjHGuZCzMntUcneMtpr4YNy0AEHYwuWBLZC"
 var key= "83bcd41b2f4711fda30600152d4d32f1"
 var aikey= "e92f37fadbcf41bb86e74895bed5711d"
-let locData =  [
+/*let locData =  [
 		{
 			content_type : "location",
 			title : "get location",
 			payload : "location_for_developer"
 		}
-	]
+	]*/
 
 /***lib***/
 const express = require('express')
@@ -78,7 +78,7 @@ function sendText(sender, sText) {
 	})
 }
 
-function sendPayload(sender,data)
+function sendPayload(sender)
 {
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
@@ -88,7 +88,13 @@ function sendPayload(sender,data)
 			recipient: {id: sender},
 			message :{
         text:sText ,
-        quick_replies : data
+        quick_replies :[
+						{
+							content_type : "location",
+							title : "get location",
+							payload : "location_for_developer"
+						}
+					]
       }
 		}
 	}, function(error, response, body) {
@@ -121,9 +127,9 @@ function processText(sender,text)
     var country = response.result.parameters.country;
     console.log(response.result.parameters);
 	}
-		if(!city || !latitude || !longitude || !country)
+		if(!city && !latitude && !longitude && !country)
 		{
-			sendPayload(sender,locData)
+			sendPayload(sender)
 		}
     getTemperature(sender,city,country,latitude,longitude)
   });
