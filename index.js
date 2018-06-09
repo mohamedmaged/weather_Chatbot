@@ -57,19 +57,15 @@ function sendText(sender, sText) {
 		qs : {access_token: token},
 		method: "POST",
 		json: {
-			recipient: {id: sender},
-			message :{
-        text:sText,
-        quick_replies : [
-					{
-						content_type: text ,
-						title: " get location " ,
-						payload : <POSTBACK_PAYLOAD>
-					} ,
+			"recipient": {id: sender},
+			"message" :{
+        "text":sText,
+        /*quick_replies : [
           {
+						title : "get location",
             content_type : location
           }
-        ]
+        ]*/
       }
 		}
 	}, function(error, response, body) {
