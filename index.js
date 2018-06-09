@@ -113,7 +113,7 @@ function processText(sender,text)
 		console.log(response);
 		console.log(" all result ");
 		console.log(response.result);
-		if(response.result.intent.displayName === "weather")
+		if(response.result.metadata.intentName === "weather")
 		{
     var city =response.result.parameters.city ;
     var latitude = response.result.parameters.lat;
